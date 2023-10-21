@@ -15,8 +15,8 @@
     "uploader"
   ],
   "success_url": "https://t.me/xurluploaderbot",
-  "website": "https://github.com/X-Gorn",
-  "repository": "https://github.com/X-Gorn/X-URL-Uploader",
+  "website": "https://github.com/Ravindu12123/",
+  "repository": "https://github.com/Ravindu12123/X-URL-Uploader",
   "env": {
     "WEBHOOK": {
       "description": "Setting this to ANYTHING will enable webhooks when in env mode",
@@ -24,19 +24,19 @@
     },
     "TG_BOT_TOKEN": {
       "description": "Your bot token, as a string.",
-      "value": ""
+      "value": "5328388669:AAHoLg2YNuhJEUtF3uH299lsNUl69019iWQ"
     },
     "APP_ID": {
       "description": "Get this value from https://my.telegram.org",
-      "value": ""
+      "value": "7322056"
     },
     "API_HASH": {
       "description": "Get this value from https://my.telegram.org",
-      "value": ""
+      "value": "89074aa74ed297150b3120914946db5c"
     },
     "AUTH_USERS": {
       "description": "allow only pre-defined users to use this bot (your id).",
-      "value": "87371682 98736827 72736723"
+      "value": "1387186514"
     },
     "DEF_THUMB_NAIL_VID_S": {
       "description": "default thumbnail to be used in the videos. Incase, youtube-dl is unable to find a thumbnail.",
