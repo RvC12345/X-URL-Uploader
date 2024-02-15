@@ -21,9 +21,10 @@ Telegram RoBot to Upload Links.
 
 [![YouTube Video Views](https://img.shields.io/youtube/views/SKrEaAavhMs?logoColor=black)](https://youtu.be/SKrEaAavhMs)
 
-## Telegram Support:
+**Deploay on render**
 
-[![Group](https://img.shields.io/badge/TG-Group-30302f?style=flat&logo=telegram)](https://t.me/WeebProgrammer)
+[Render](https://render.com/deploy?repo=https://github.com/Ravindu12123/X-URL-Uploader/tree/Master)
+
 
 ## Credits, and Thanks to:
 
