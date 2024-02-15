@@ -23,7 +23,7 @@ Telegram RoBot to Upload Links.
 
 **Deploay on render**
 
-[Render](https://render.com/deploy?repo=https://github.com/Ravindu12123/X-URL-Uploader/tree/Master)
+[Render](https://render.com/deploy?repo=https://github.com/Ravindu12123/X-URL-Uploader/tree/master)
 
 
 ## Credits, and Thanks to:
