@@ -1,0 +1,29 @@
+services:
+  - type: web
+    plan: free
+    name: RX-Uploader
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    repo: https://github.com/Ravindu12123/X-URL-Uploader.git     
+    branch: master
+    envVars:
+      - key: token
+        sync: false
+      - key: API_ID 
+        sync: false
+      - key: ApiHash
+        sync: false
+      - key: Auth
+        sync: false
+      - key: BOT_USERNAME
+        sync: false
+      - key: WEBHOOK
+        sync: false
+      - key: DEF_THUMB_NAIL_VID_S
+        sync: false
+      - key: UPDATES_CHANNEL
+        sync: false
+      - key: LOG_CHANNEL
+        sync: false    
+    autoDeploy: false
