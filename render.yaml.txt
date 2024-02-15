@@ -5,16 +5,16 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python bot.py
-    repo: https://github.com/LISA-KOREA/UPLOADER-BOT-V3.git      
+    repo: https://github.com/Ravindu12123/X-URL-Uploader      
     branch: Master
     envVars:
-      - key: BOT_TOKEN 
+      - key: token
         sync: false
       - key: API_ID 
         sync: false
-      - key: API_HASH
+      - key: ApiHash
         sync: false
-      - key: OWNER_ID 
+      - key: Auth
         sync: false
       - key: BOT_USERNAME
         sync: false
@@ -22,8 +22,6 @@ services:
         sync: false
       - key: DEF_THUMB_NAIL_VID_S
         sync: false
-      - key: DATABASE_URI
-        sync: false 
       - key: UPDATES_CHANNEL
         sync: false
       - key: LOG_CHANNEL
