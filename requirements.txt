@@ -12,3 +12,4 @@ lk21
 filetype
 tldextract
 Flask==1.1.2
+gunicorn==20.1.0
