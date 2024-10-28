@@ -11,3 +11,4 @@ olefile
 lk21
 filetype
 tldextract
+Flask==1.1.2
