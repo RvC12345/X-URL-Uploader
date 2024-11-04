@@ -30,8 +30,6 @@ from pyrogram.errors import UserNotParticipant
 from datetime import timedelta
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token
-bot_token = 'YOUR_BOT_TOKEN'
-bot = Bot(token=bot_token)
 
 def download_file_with_progress(update, url, output_path):
     #chat_id = update.effective_chat.id
