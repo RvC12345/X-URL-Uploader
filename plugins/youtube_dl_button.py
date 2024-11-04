@@ -34,10 +34,15 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
-from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
+from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots, take_screen_shot
 
 
 async def youtube_dl_call_back(bot, update):
+    await bot.edit_message_text(
+        text="Working on it...",
+        chat_id=update.message.chat.id,
+        message_id=update.message.id
+    )
     cb_data = update.data
     # youtube_dl extractors
     tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("|")
@@ -244,7 +249,7 @@ async def youtube_dl_call_back(bot, update):
                 # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
                 
             else:
-                thumb_image_path = None
+                thumb_image_path = await take_screen_shot(download_directory,tmp_directory_for_each_user,3)
             start_time = time.time()
             # try to upload file
             if tg_send_type == "audio":
@@ -325,9 +330,9 @@ async def youtube_dl_call_back(bot, update):
             media_album_p = []
             if images is not None:
                 i = 0
-                caption = "© @xTeamBots"
+                caption = "© @RVX"
                 if is_w_f:
-                    caption = "@xurluploaderbot"
+                    caption = "@RXURLUperbot"
                 for image in images:
                     if os.path.exists(str(image)):
                         if i == 0:
