@@ -103,8 +103,9 @@ async def youtube_dl_call_back(bot, update):
         message_id=update.message.message_id
     )
     user = await bot.get_me()
-    mention = user["mention"]
-    description = Translation.CUSTOM_CAPTION_UL_FILE.format(mention)
+    #mention = user["mention"]
+    #description = Translation.CUSTOM_CAPTION_UL_FILE.format(mention)
+    description = f"Doooooo"
     if "fulltitle" in response_json:
         description = response_json["fulltitle"][0:1021]
         # escape Markdown and special characters
