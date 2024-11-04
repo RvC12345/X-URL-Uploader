@@ -28,6 +28,60 @@ from hachoir.parser import createParser
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
 
+import requests
+import time
+from telegram import Bot
+from telegram.ext import Updater
+from datetime import timedelta
+
+# Replace 'YOUR_BOT_TOKEN' with your actual bot token
+bot_token = 'YOUR_BOT_TOKEN'
+bot = Bot(token=bot_token)
+
+def download_file_with_progress(update, url, output_path):
+    #chat_id = update.effective_chat.id
+    response = requests.get(url, stream=True)
+    total_size = int(response.headers.get('content-length', 0))
+
+    # Create an initial message to edit
+    await bot.edit_message_text(
+        text="starting with progress bar...",
+        chat_id=update.message.chat.id,
+        message_id=update.message.id
+    )
+    downloaded = 0
+    start_time = time.time()
+    num_blocks = 10  # Set the number of blocks in the progress bar
+    last_update = 0  # Track the last 10% update
+    
+    with open(output_path, 'wb') as file:
+        for chunk in response.iter_content(1024):  # 1 KB chunks
+            if chunk:
+                file.write(chunk)
+                downloaded += len(chunk)
+                
+                # Calculate progress
+                progress = int((downloaded / total_size) * 100)
+                
+                # Update message only if progress has increased by 10%
+                if progress >= last_update + 10:
+                    last_update = progress // 10 * 10  # Round to the nearest 10%
+                    
+                    completed_blocks = progress // (100 // num_blocks)  # Calculate completed blocks
+                    bar = '✅️' * completed_blocks + '❌️' * (num_blocks - completed_blocks)  # Create bar with 10 blocks
+                    
+                    # Estimate remaining time
+                    elapsed_time = time.time() - start_time
+                    eta = (elapsed_time / downloaded) * (total_size - downloaded) if downloaded > 0 else 0
+                    eta_formatted = str(timedelta(seconds=int(eta)))
+                    
+                    # Update message with progress
+                    message_text = f"[{bar}]\nPercentage: {progress}%\nETA: {eta_formatted}"
+                    await bot.edit_message_text(
+                      text=message_text,
+                      chat_id=update.message.chat.id,
+                      message_id=update.message.id
+                    )
 
 @pyrogram.Client.on_message(pyrogram.filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
@@ -49,6 +103,11 @@ async def echo(bot, update):
                 return
             os.makedirs(folder)
             await pablo.edit_text('Downloading...')
+            updateR = await bot.send_message(
+               text=Translation.DOWNLOAD_START,
+               chat_id=update.message.chat.id,
+               message_id=update.message.id
+            )
             bypasser = lk21.Bypass()
             xurl = bypasser.bypass_url(url)
             if ' | ' in url:
@@ -62,8 +121,9 @@ async def echo(bot, update):
                 if '+' in file_name:
                     file_name = file_name.replace('+', ' ')
             dldir = f'{folder}{file_name}'
-            r = requests.get(xurl, allow_redirects=True)
-            open(dldir, 'wb').write(r.content)
+            #r = requests.get(xurl, allow_redirects=True)
+            #open(dldir, 'wb').write(r.content)
+            await download_file_with_progress(updateR, xurl, dldir)
             try:
                 file = filetype.guess(dldir)
                 xfiletype = file.mime
