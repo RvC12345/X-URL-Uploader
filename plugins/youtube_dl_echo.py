@@ -27,11 +27,6 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
-
-import requests
-import time
-from telegram import Bot
-from telegram.ext import Updater
 from datetime import timedelta
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token
